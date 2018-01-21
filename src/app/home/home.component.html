@@ -1,3 +1,7 @@
-<p>
-  home works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12"></div>
+    <p-menu #menu popup="popup" [model]="items"></p-menu>
+    <button type="button" pButton icon="fa fa-list" label="Show" (click)="menu.toggle($event)"></button>
+  </div>
+</div>
