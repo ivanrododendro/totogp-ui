@@ -12,6 +12,7 @@ import { BetService } from './service/bet-service';
 import { DialogModule } from 'primeng/dialog';
 import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DataListModule,
     ButtonModule,
     DialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DropdownModule
   ],
   providers: [PlayerService, BetService],
   bootstrap: [AppComponent]

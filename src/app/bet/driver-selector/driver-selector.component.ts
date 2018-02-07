@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Rider } from '../../model/rider';
 
 @Component({
   selector: 'app-driver-selector',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./driver-selector.component.css']
 })
 export class DriverSelectorComponent implements OnInit {
+  selectedDriver: Rider;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bet-dialog.component.css']
 })
 export class BetDialogComponent implements OnInit {
-  displayed: boolean = false;
+  displayed = true;
 
   constructor() {}
 
@@ -14,6 +14,8 @@ export class BetDialogComponent implements OnInit {
 
   display() {
     this.displayed = true;
+
+    console.log('displayed : ' + this.displayed);
   }
 
   hide() {
