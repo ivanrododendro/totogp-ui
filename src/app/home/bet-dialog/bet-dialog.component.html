@@ -1,3 +1,5 @@
-<p-dialog header="Bet!" [(visible)]="displayed">
-  Content
-</p-dialog>
+<p-dropdown [options]="riders" [(ngModel)]="winnerRider" placeholder="Select the winner" optionLabel="name"></p-dropdown>
+<p-dropdown [options]="riders" [(ngModel)]="poleRider" placeholder="Select the pole man" optionLabel="name"></p-dropdown>
+<p-dropdown [options]="riders" [(ngModel)]="firstRider" placeholder="Select the 1st on the podium" optionLabel="name"></p-dropdown>
+<p-dropdown [options]="riders" [(ngModel)]="secondRider" placeholder="Select the 2nd on the podium" optionLabel="name"></p-dropdown>
+<p-dropdown [options]="riders" [(ngModel)]="thirdRider" placeholder="Select the 3rd on the podium" optionLabel="name"></p-dropdown>

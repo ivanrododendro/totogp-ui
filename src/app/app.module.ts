@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +15,8 @@ import { DialogModule } from 'primeng/dialog';
 import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RiderService } from './service/rider-service';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,12 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     DialogModule,
     BrowserAnimationsModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
-  providers: [PlayerService, BetService],
+  providers: [PlayerService, BetService, RiderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

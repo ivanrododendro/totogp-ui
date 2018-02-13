@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Rider } from '../../model/rider';
+import { RiderService } from '../../service/rider-service';
 
 @Component({
   selector: 'app-driver-selector',
@@ -9,7 +10,15 @@ import { Rider } from '../../model/rider';
 export class DriverSelectorComponent implements OnInit {
   selectedDriver: Rider;
 
-  constructor() {}
+  riders: Rider[];
 
-  ngOnInit() {}
+  constructor(private riderService: RiderService) {}
+
+  ngOnInit() {
+    this.riders = this.riderService.riders;
+  }
+
+  showSelected() {
+    console.log(this.selectedDriver.name);
+  }
 }
