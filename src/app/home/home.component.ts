@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   }
 
   bet() {
-    // this.betService.bet();
-    this.betDialog.display();
+    console.log('does nothing');
   }
 }

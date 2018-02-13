@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RiderService } from './service/rider-service';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RiderService } from './service/rider-service';
     DropdownModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PanelModule
   ],
   providers: [PlayerService, BetService, RiderService],
   bootstrap: [AppComponent]
