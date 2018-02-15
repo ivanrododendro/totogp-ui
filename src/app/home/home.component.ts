@@ -4,6 +4,8 @@ import { Player } from '../model/player';
 import { DataList } from 'primeng/datalist';
 import { BetService } from '../service/bet-service';
 import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private betService: BetService,
-    private betDialog: BetDialogComponent
+    private betDialog: BetDialogComponent,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -26,6 +29,6 @@ export class HomeComponent implements OnInit {
   }
 
   bet() {
-    console.log('does nothing');
+    this.router.navigate(['/bet']);
   }
 }

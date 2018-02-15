@@ -23,7 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'bet', component: BetDialogComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -49,7 +49,11 @@ const appRoutes: Routes = [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    PanelModule
+    PanelModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [PlayerService, BetService, RiderService],
   bootstrap: [AppComponent]

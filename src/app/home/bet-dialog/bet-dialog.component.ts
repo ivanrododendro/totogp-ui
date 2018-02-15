@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RiderService } from '../../service/rider-service';
 import { Rider } from '../../model/rider';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bet-dialog',
@@ -16,9 +17,13 @@ export class BetDialogComponent implements OnInit {
 
   riders: Rider[];
 
-  constructor(private riderService: RiderService) {}
+  constructor(private riderService: RiderService,
+  private router: Router) {}
 
   ngOnInit() {
     this.riders = this.riderService.getRiders();
+  }
+  placeBet (){
+    this.router.navigate(['/home']);
   }
 }
