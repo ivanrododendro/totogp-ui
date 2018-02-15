@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RiderService } from '../../service/rider-service';
-import { Rider } from '../../model/rider';
 import { Router } from '@angular/router';
+import { Rider } from '../model/rider';
+import { RiderService } from '../service/rider-service';
 
 @Component({
   selector: 'app-bet-dialog',

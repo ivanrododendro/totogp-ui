@@ -3,9 +3,9 @@ import { PlayerService } from '../service/player-service';
 import { Player } from '../model/player';
 import { DataList } from 'primeng/datalist';
 import { BetService } from '../service/bet-service';
-import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { BetDialogComponent } from '../bet-dialog/bet-dialog.component';
 
 @Component({
   selector: 'app-home',

@@ -13,7 +13,7 @@ import { PlayerService } from './service/player-service';
 import { ButtonModule } from 'primeng/button';
 import { BetService } from './service/bet-service';
 import { DialogModule } from 'primeng/dialog';
-import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
+import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
