@@ -21,6 +21,8 @@ import { RiderService } from './service/rider-service';
 import { PanelModule } from 'primeng/panel';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { GrowlModule } from 'primeng/growl';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,7 +39,7 @@ const appRoutes: Routes = [
     DriverSelectorComponent,
     BetDialogComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,10 +54,10 @@ const appRoutes: Routes = [
     PanelModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )
+      { enableTracing: false } // <-- debugging purposes only
+    ), GrowlModule
   ],
-  providers: [PlayerService, BetService, RiderService],
+  providers: [PlayerService, BetService, RiderService, MessageService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

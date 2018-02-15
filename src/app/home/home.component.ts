@@ -6,6 +6,8 @@ import { BetService } from '../service/bet-service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { BetDialogComponent } from '../bet-dialog/bet-dialog.component';
+import { Message } from 'primeng/api';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-home',
@@ -16,16 +18,25 @@ import { BetDialogComponent } from '../bet-dialog/bet-dialog.component';
 @Injectable()
 export class HomeComponent implements OnInit {
   players: Player[];
+  playerHasToBet: boolean;
+  msgs: Message[];
 
   constructor(
     private playerService: PlayerService,
     private betService: BetService,
     private betDialog: BetDialogComponent,
-    private router: Router
-  ) {}
+    private router: Router,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
-    this.players = this.playerService.players;
+    this.players = this.playerService.getPlayerRanking();
+    this.playerHasToBet = this.playerService.playerHasToBet();
+
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      console.log(messages);
+      this.msgs.push(messages[0]);
+    });
   }
 
   bet() {

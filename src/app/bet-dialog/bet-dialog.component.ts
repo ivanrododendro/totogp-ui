@@ -18,12 +18,12 @@ export class BetDialogComponent implements OnInit {
   riders: Rider[];
 
   constructor(private riderService: RiderService,
-  private router: Router) {}
+    private router: Router) { }
 
   ngOnInit() {
     this.riders = this.riderService.getRiders();
   }
-  placeBet (){
+  placeBet() {
     this.router.navigate(['/home']);
   }
 }

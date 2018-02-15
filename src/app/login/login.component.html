@@ -1,15 +1,15 @@
 <p-panel class="ui-g ui-fluid" header="Please login">
   <div class="ui-g-12 ui-md-6">
     <span class="ui-g-12 ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText>
+      <input id="float-input" type="text" size="30" pInputText  [(ngModel)]="username">
       <label for="float-input">Username</label>
     </span>
     <span class="ui-g-12 ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText>
+      <input id="float-input" type="text" size="30" pInputText  [(ngModel)]="password" disabled="true">
       <label for="float-input">Password</label>
     </span>
     <p-footer>
-      <a routerLink="/home">Login</a>
+      <p-button (onClick)="login()"> </p-button>
     </p-footer>
   </div>
 </p-panel>
