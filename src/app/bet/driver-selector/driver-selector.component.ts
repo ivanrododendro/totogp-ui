@@ -19,6 +19,6 @@ export class DriverSelectorComponent implements OnInit {
   }
 
   showSelected() {
-    console.log(this.selectedDriver.name);
+    console.log(this.selectedRider.name);
   }
 }
