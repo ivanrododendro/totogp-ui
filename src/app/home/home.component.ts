@@ -5,15 +5,13 @@ import { DataList } from 'primeng/datalist';
 import { BetService } from '../service/bet-service';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
-import { BetDialogComponent } from '../bet-dialog/bet-dialog.component';
 import { Message } from 'primeng/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [BetDialogComponent]
+  styleUrls: ['./home.component.css']
 })
 @Injectable()
 export class HomeComponent implements OnInit {
@@ -24,7 +22,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private betService: BetService,
-    private betDialog: BetDialogComponent,
     private router: Router,
     private messageService: MessageService
   ) { }
