@@ -1,12 +1,1 @@
-<p-dropdown [options]="riders" [(ngModel)]="selectedRider" [style]="{'width':'300px'}" filter="true">
-  <ng-template let-selected pTemplate="selectedItem">
-    <img src="{{selected.imageUr}}" style="width:64px;vertical-align:middle" />
-    <span style="vertical-align:middle">{{selected.name}}</span>
-  </ng-template>
-  <ng-template let-item pTemplate="item">
-    <div class="ui-helper-clearfix" style="position: relative;height: 80px;">
-      <img src="{{item.imageUrl}}"  style="width:70px;position:absolute;top:1px;left:5px" />
-      <div style="font-size:14px;float:right;margin-top:4px">item.name</div>
-    </div>
-  </ng-template>
-</p-dropdown>
+<p-dropdown [options]="riders" [(ngModel)]="selectedDriver" placeholder="Select a Rider" optionLabel="name"></p-dropdown>

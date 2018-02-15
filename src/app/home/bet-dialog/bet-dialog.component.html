@@ -1,3 +1,37 @@
-<p-dialog header="Bet!" [(visible)]="displayed" >
-  <app-driver-selector></app-driver-selector>
-</p-dialog>
+<p-panel class="ui-g" header="Bet!">
+  <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-4">
+      <label>Winner</label>
+    </div>
+    <div class="ui-g-8">
+      <p-dropdown [options]="riders" [(ngModel)]="winnerRider" placeholder="Select the winner" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-4">
+      <label>Pole</label>
+    </div>
+    <div class="ui-g-8">
+      <p-dropdown [options]="riders" [(ngModel)]="poleRider" placeholder="Select the pole man" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-4">
+      <label>1st</label>
+    </div>
+    <div class="ui-g-8">
+      <p-dropdown [options]="riders" [(ngModel)]="firstRider" placeholder="Select the 1st on the podium" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-4">
+      <label>2nd</label>
+    </div>
+    <div class="ui-g-8">
+      <p-dropdown [options]="riders" [(ngModel)]="secondRider" placeholder="Select the 2nd on the podium" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="ui-g-4">
+      <label>3rd</label>
+    </div>
+    <div class="ui-g-8">
+      <p-dropdown [options]="riders" [(ngModel)]="thirdRider" placeholder="Select the 3rd on the podium" optionLabel="name"></p-dropdown>
+    </div>
+  </div>
+  <p-footer>
+    <p-button label="Bet!"></p-button>
+  </p-footer>
+</p-panel>

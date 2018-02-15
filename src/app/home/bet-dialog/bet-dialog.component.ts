@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RiderService } from '../../service/rider-service';
+import { Rider } from '../../model/rider';
 
 @Component({
   selector: 'app-bet-dialog',
@@ -6,19 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bet-dialog.component.css']
 })
 export class BetDialogComponent implements OnInit {
-  displayed = true;
+  winnerRider: Rider;
+  poleRider: Rider;
+  firstRider: Rider;
+  secondRider: Rider;
+  thirdRider: Rider;
 
-  constructor() {}
+  riders: Rider[];
 
-  ngOnInit() {}
+  constructor(private riderService: RiderService) {}
 
-  display() {
-    this.displayed = true;
-
-    console.log('displayed : ' + this.displayed);
-  }
-
-  hide() {
-    this.displayed = false;
+  ngOnInit() {
+    this.riders = this.riderService.getRiders();
   }
 }

@@ -15,6 +15,10 @@ export class DriverSelectorComponent implements OnInit {
   constructor(private riderService: RiderService) {}
 
   ngOnInit() {
-    this.riders = this.riderService.riders;
+    this.riders = this.riderService.getRiders();
+  }
+
+  showSelected() {
+    console.log(this.selectedDriver.name);
   }
 }
