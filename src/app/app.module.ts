@@ -1,46 +1,50 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { SelectItem } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { DataListModule } from 'primeng/datalist';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { GrowlModule } from 'primeng/growl';
+import { PanelModule } from 'primeng/panel';
 
 import { AppComponent } from './app.component';
+import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
+import {
+  DriverSelectorComponent
+} from './home/bet-dialog/driver-selector/driver-selector.component';
 import { HomeComponent } from './home/home.component';
-import { BetComponent } from './bet/bet.component';
-import { DriverSelectorComponent } from './bet/driver-selector/driver-selector.component';
-import { DataListModule } from 'primeng/datalist';
-import { PlayerService } from './service/player-service';
-import { ButtonModule } from 'primeng/button';
-import { BetService } from './service/bet-service';
-import { DialogModule } from 'primeng/dialog';
-import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RiderService } from './service/rider-service';
-import { PanelModule } from 'primeng/panel';
+import { RankingComponent } from './home/ranking/ranking.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { GrowlModule } from 'primeng/growl';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { SelectItem } from 'primeng/api';
+import { BetService } from './service/bet-service';
+import { PlayerService } from './service/player-service';
+import { RiderService } from './service/rider-service';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home', component: HomeComponent, children: [
+      { path: 'bet', component: BetDialogComponent }]
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'bet', component: BetDialogComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BetComponent,
     DriverSelectorComponent,
     BetDialogComponent,
     LoginComponent,
     PageNotFoundComponent,
+    RankingComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,7 @@ const appRoutes: Routes = [
     PanelModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
+      { enableTracing: true } // <-- debugging purposes only
     ), GrowlModule
   ],
   providers: [PlayerService, BetService, RiderService, MessageService],

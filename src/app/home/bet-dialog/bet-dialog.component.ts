@@ -1,10 +1,9 @@
+import { RiderService } from './../../service/rider-service';
+import { Rider } from './../../model/rider';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-
-import { Rider } from '../model/rider';
-import { RiderService } from '../service/rider-service';
 
 @Component({
   selector: 'app-bet-dialog',

@@ -1,6 +1,6 @@
+import { RiderService } from './../../../service/rider-service';
+import { Rider } from './../../../model/rider';
 import { Component, OnInit } from '@angular/core';
-import { Rider } from '../../model/rider';
-import { RiderService } from '../../service/rider-service';
 
 @Component({
   selector: 'app-driver-selector',
@@ -12,7 +12,7 @@ export class DriverSelectorComponent implements OnInit {
 
   riders: Rider[];
 
-  constructor(private riderService: RiderService) {}
+  constructor(private riderService: RiderService) { }
 
   ngOnInit() {
     this.riders = this.riderService.getRiders();

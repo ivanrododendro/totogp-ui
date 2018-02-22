@@ -1,0 +1,16 @@
+<p-dataList [value]="players" scrollable="true">
+  <p-header>Ranking</p-header>
+  <ng-template let-player pTemplate="item">
+    <div class="ui-g ui-fluid ">
+      <div class="ui-g-12 ui-md-9">
+        <div class="ui-g">
+          <div class="ui-g-2 ui-sm-6">{{player.name}}</div>
+          <div class="ui-g-10 ui-sm-6">{{player.points}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <p-footer *ngIf="playerHasToBet">
+    <p-button label="Place bet" (onClick)="bet()"></p-button>
+  </p-footer>
+</p-dataList>
