@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GrowlModule } from 'primeng/growl';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { SelectItem } from 'primeng/api';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
