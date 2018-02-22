@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   players: Player[];
   playerHasToBet: boolean;
   msgs: Message[] = [];
+  username: String;
 
   constructor(
     private playerService: PlayerService,
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.players = this.playerService.getPlayerRanking();
     this.playerHasToBet = this.playerService.playerHasToBet();
+
+    this.username = localStorage.getItem('username');
 
     this.messageService.messageObserver.subscribe((messages: Message) => {
       console.log(messages);
