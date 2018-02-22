@@ -12,8 +12,9 @@
       </div>
     </ng-template>
     <p-footer *ngIf="playerHasToBet">
-      <p-button label="Place bet" (onClick)="bet()" ></p-button>
+      <p-button label="Place bet" (onClick)="bet()"></p-button>
+      <p-button label="Message" (onClick)="message()"></p-button>
     </p-footer>
   </p-dataList>
 </div>
-<p-growl></p-growl>
+<p-growl [(value)]="msgs"></p-growl>

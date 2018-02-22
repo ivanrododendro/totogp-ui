@@ -17,7 +17,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 export class HomeComponent implements OnInit {
   players: Player[];
   playerHasToBet: boolean;
-  msgs: Message[];
+  msgs: Message[] = [];
 
   constructor(
     private playerService: PlayerService,
@@ -30,13 +30,17 @@ export class HomeComponent implements OnInit {
     this.players = this.playerService.getPlayerRanking();
     this.playerHasToBet = this.playerService.playerHasToBet();
 
-    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+    this.messageService.messageObserver.subscribe((messages: Message) => {
       console.log(messages);
-      this.msgs.push(messages[0]);
+      this.msgs.push(messages);
     });
   }
 
   bet() {
     this.router.navigate(['/bet']);
+  }
+
+  message() {
+    this.messageService.add({ severity: 'success', summary: 'Welcome' + ' ', detail: '' });
   }
 }

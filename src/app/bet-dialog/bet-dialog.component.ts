@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/components/common/messageservice';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rider } from '../model/rider';
@@ -18,12 +19,14 @@ export class BetDialogComponent implements OnInit {
   riders: Rider[];
 
   constructor(private riderService: RiderService,
-    private router: Router) { }
+    private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
     this.riders = this.riderService.getRiders();
   }
   placeBet() {
+    this.messageService.add({ severity: 'success', summary: 'Your bet has been placed!' + ' ', detail: '' });
+
     this.router.navigate(['/home']);
   }
 }
