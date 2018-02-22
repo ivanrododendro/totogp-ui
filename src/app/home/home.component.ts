@@ -15,9 +15,23 @@ import { PlayerService } from '../service/player-service';
 })
 @Injectable()
 export class HomeComponent implements OnInit {
-  username: string;
+  players: Player[];
+  playerHasToBet: boolean;
 
-  ngOnInit(): void {
-    this.username = localStorage.getItem('username');
+  constructor(
+    private playerService: PlayerService,
+    private betService: BetService,
+    private router: Router,
+    private messageService: MessageService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.players = this.playerService.getPlayerRanking();
+    this.playerHasToBet = this.playerService.playerHasToBet();
+  }
+
+  bet() {
+    this.router.navigate(['bet']);
   }
 }

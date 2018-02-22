@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-6" *ngIf="username">
+    <div class="ui-g-8">
+      <p class="ui-widget">Welcome {{username}}</p>
+    </div>
+    <div class="ui-g-4">
+      <img src="assets/images/user.png" style="width:56px;vertical-align:middle;float:right; margin: 0px 0px 0px 0px;">
+    </div>
+  </div>
+  <div class="ui-g-12 ui-md-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<p-growl [life]='1000'></p-growl>

@@ -16,9 +16,7 @@ import { PanelModule } from 'primeng/panel';
 
 import { AppComponent } from './app.component';
 import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
-import {
-  DriverSelectorComponent
-} from './home/bet-dialog/driver-selector/driver-selector.component';
+import { DriverSelectorComponent } from './home/bet-dialog/driver-selector/driver-selector.component';
 import { HomeComponent } from './home/home.component';
 import { RankingComponent } from './home/ranking/ranking.component';
 import { LoginComponent } from './login/login.component';
@@ -29,9 +27,10 @@ import { RiderService } from './service/rider-service';
 
 const appRoutes: Routes = [
   {
-    path: 'home', component: HomeComponent, children: [
-      { path: 'bet', component: BetDialogComponent }]
+    path: 'home',
+    component: HomeComponent
   },
+  { path: 'bet', component: BetDialogComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: HomeComponent }
 ];
@@ -44,7 +43,7 @@ const appRoutes: Routes = [
     BetDialogComponent,
     LoginComponent,
     PageNotFoundComponent,
-    RankingComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +59,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    ), GrowlModule
+    ),
+    GrowlModule
   ],
   providers: [PlayerService, BetService, RiderService, MessageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
