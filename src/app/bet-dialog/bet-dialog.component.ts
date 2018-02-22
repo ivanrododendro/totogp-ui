@@ -18,7 +18,7 @@ export class BetDialogComponent implements OnInit {
   secondRider: Rider;
   thirdRider: Rider;
 
-  riderSelect: SelectItem[];
+  riderSelect: SelectItem[] = [];
 
   constructor(private riderService: RiderService,
     private router: Router, private messageService: MessageService) { }
@@ -27,8 +27,9 @@ export class BetDialogComponent implements OnInit {
     const riders = this.riderService.getRiders();
 
     for (let index = 0; index < riders.length; index++) {
-      const element = array[index];
+      const rider = riders[index];
 
+      this.riderSelect.push({ label: rider.name, value: rider.id });
     }
   }
   placeBet() {
