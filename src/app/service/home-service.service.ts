@@ -3,11 +3,11 @@ import { OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class PlayerService implements OnInit {
+export class HomeService implements OnInit {
   private players: Player[] = [new Player('Ale', 10), new Player('Ivan', 20)];
   canBet: boolean;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.playerHasToBet();

@@ -1,5 +1,5 @@
-import { BetService } from './../../service/bet-service';
-import { PlayerService } from './../../service/player-service';
+import { BetService } from './../../service/bet-service.service';
+import { HomeService } from './../../service/home-service.service';
 import { Player } from './../../model/player';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,12 +18,12 @@ export class RankingComponent implements OnInit {
   playerHasToBet: boolean;
 
   constructor(
-    private playerService: PlayerService,
+    private playerService: HomeService,
     private betService: BetService,
     private router: Router,
     private messageService: MessageService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.players = this.playerService.getPlayerRanking();

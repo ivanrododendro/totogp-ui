@@ -12,6 +12,6 @@ export class AppComponent implements OnInit {
   username: string;
 
   ngOnInit(): void {
-    this.username = localStorage.getItem('username');
+    this.username = sessionStorage.getItem('username');
   }
 }

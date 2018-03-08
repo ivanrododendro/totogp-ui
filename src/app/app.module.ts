@@ -1,6 +1,8 @@
+import { AuthGuard } from './shared/auth-guard';
+import { TotogpErrorHandler } from './shared/totogp-error-handler';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,19 +23,15 @@ import { HomeComponent } from './home/home.component';
 import { RankingComponent } from './home/ranking/ranking.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { BetService } from './service/bet-service';
-import { PlayerService } from './service/player-service';
-import { RiderService } from './service/rider-service';
+import { BetService } from './service/bet-service.service';
+import { HomeService } from './service/home-service.service';
 import { Http } from '@angular/http';
 
 const appRoutes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  { path: 'bet', component: BetDialogComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'bet', component: BetDialogComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -65,13 +63,16 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    PlayerService,
+    HomeService,
     BetService,
-    RiderService,
     MessageService,
     HttpClient,
-    BetService
+    BetService,
+    {
+      provide: ErrorHandler,
+      useClass: TotogpErrorHandler
+    }, AuthGuard
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

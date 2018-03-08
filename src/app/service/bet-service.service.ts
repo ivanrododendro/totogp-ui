@@ -1,9 +1,29 @@
+import { Rider } from './../model/rider';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class BetService {
-  constructor(private http: HttpClient) {}
+
+  private riders: Rider[] = [
+    new Rider(
+      4,
+      'Andrea Dovizioso',
+      'http://www.motogp.com/en/api/rider/photo/grid/old/5885'
+    ),
+    new Rider(
+      25,
+      'Maverick Vinales',
+      'http://www.motogp.com/en/api/rider/photo/grid/old/7409'
+    )
+  ];
+
+  constructor(private http: HttpClient) { }
+
+  getRiders() {
+    return this.riders.slice();
+  }
+
 
   bet() {
     console.log('betservice :: bet');
@@ -24,12 +44,12 @@ export class BetService {
       )
       .subscribe(next => console.log(next), error => console.log(error));
   }
-  placePoleBet(driverNumber: number) {}
+  placePoleBet(driverNumber: number) { }
   placePodiumBet(
     fisrtDriverNumber: number,
     secondDriverNumber: number,
     thidrDriverNumber: number
-  ) {}
+  ) { }
 
   getCurrentBetType() {
     const httpOptions = {

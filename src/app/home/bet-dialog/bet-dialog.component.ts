@@ -1,10 +1,9 @@
-import { RiderService } from './../../service/rider-service';
 import { Rider } from './../../model/rider';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { BetService } from '../../service/bet-service';
+import { BetService } from '../../service/bet-service.service';
 
 @Component({
   selector: 'app-bet-dialog',
@@ -19,32 +18,32 @@ export class BetDialogComponent implements OnInit {
   secondRider: Rider;
   thirdRider: Rider;
 
-  riderSelect: SelectItem[] = [];
+  // riderSelect: SelectItem[] = [];
   riders: Rider[];
 
   currentBetType: string;
 
   constructor(
-    private riderService: RiderService,
     private router: Router,
     private messageService: MessageService,
     private betService: BetService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.riders = this.riderService.getRiders();
+    this.riders = this.betService.getRiders();
 
-    for (let index = 0; index < this.riders.length; index++) {
-      const rider = this.riders[index];
+    /*     for (let index = 0; index < this.riders.length; index++) {
+          const rider = this.riders[index];
 
-      this.riderSelect.push({ label: rider.name, value: rider.id });
-    }
+          this.riderSelect.push({ label: rider.name, value: rider.id });
+        } */
 
     this.betService.getCurrentBetType().subscribe(data => {
       this.currentBetType = data['currentBetType'];
-      console.log('current bet : ' + this.currentBetType);
+      /* console.log('current bet : ' + this.currentBetType); */
     });
   }
+
   placeBet() {
     this.betService.placeWinnerBet(this.winnerRider.id);
 
