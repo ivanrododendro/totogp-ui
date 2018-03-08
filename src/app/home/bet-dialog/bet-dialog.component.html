@@ -1,49 +1,52 @@
 <p-panel class="ui-g" header="Bet!">
   <div class="ui-g-12 ui-md-6">
-    <div class="ui-g-4">
+    <div class="ui-g-4" *ngIf="currentBetType=='winner_bet'">
       <label>Winner</label>
     </div>
-    <div class="ui-g-8">
+    <div class="ui-g-8" *ngIf="currentBetType=='winner_bet'">
+      <p-dropdown [options]="riders" [(ngModel)]="winnerRider" placeholder="Select the winner" optionLabel="name" *ngIf="currentBetType=='winner_bet'"></p-dropdown>
+    </div>
+    <!-- <div class="ui-g-8">
       <p-dropdown [options]="riderSelect" [(ngModel)]="winnerRider" [style]="{'width':'300px'}" datakey="id">
-        <ng-template let-selected pTemplate=" selectedItem ">
-          <img src="assets/images/riders-pic/{{selected.value}}.jpg" style="width:16px;vertical-align:middle " />
-          <span style="vertical-align:middle ">selected.label</span>
+        <ng-template let-selected pTemplate=" selectedItem">
+          <img src="assets/images/riders-pic/{{selected.value}}.jpg" style="width:16px;vertical-align:middle" />
+          <span style="vertical-align:middle">selected.label</span>
         </ng-template>
-        <ng-template let-item pTemplate="item ">
-          <div class="ui-helper-clearfix " style="position: relative;height:25px; ">
+        <ng-template let-item pTemplate="item">
+          <div class="ui-helper-clearfix" style="position: relative;height:25px;">
             <img src="assets/images/riders-pic/{{item.value}}.jpg" alt="{{item.name}}" style="width:24px;position:absolute;top:1px;left:5px"
             />
-            <div style="font-size:14px;float:right;margin-top:4px ">{{item.label}}</div>
+            <div style="font-size:14px;float:right;margin-top:4px">{{item.label}}</div>
           </div>
         </ng-template>
       </p-dropdown>
-    </div>
-    <!-- <div class="ui-g-4 ">
+    </div> -->
+    <div class="ui-g-4" *ngIf="currentBetType=='pole_bet'">
       <label>Pole</label>
     </div>
-    <div class="ui-g-8 ">
-      <p-dropdown [options]="riders " [(ngModel)]="poleRider " placeholder="Select the pole man " optionLabel="name "></p-dropdown>
+    <div class="ui-g-8" *ngIf="currentBetType=='podium_bet'">
+      <p-dropdown [options]="riders" [(ngModel)]="poleRider" placeholder="Select the pole man" optionLabel="name"></p-dropdown>
     </div>
-    <div class="ui-g-4 ">
+    <div class="ui-g-4" *ngIf="currentBetType=='podium_bet'">
       <label>1st</label>
     </div>
-    <div class="ui-g-8 ">
-      <p-dropdown [options]="riders " [(ngModel)]="firstRider " placeholder="Select the 1st on the podium" optionLabel="name"></p-dropdown>
+    <div class="ui-g-8" *ngIf="currentBetType=='podium_bet'">
+      <p-dropdown [options]="riders" [(ngModel)]="firstRider" placeholder="Select the 1st on the podium" optionLabel="name"></p-dropdown>
     </div>
-    <div class="ui-g-4 ">
+    <div class="ui-g-4" *ngIf="currentBetType=='podium_bet'">
       <label>2nd</label>
     </div>
-    <div class="ui-g-8 ">
-      <p-dropdown [options]="riders " [(ngModel)]="secondRider " placeholder="Select the 2nd on the podium" optionLabel="name "></p-dropdown>
+    <div class="ui-g-8" *ngIf="currentBetType=='podium_bet'">
+      <p-dropdown [options]="riders" [(ngModel)]="secondRider" placeholder="Select the 2nd on the podium" optionLabel="name"></p-dropdown>
     </div>
-    <div class="ui-g-4 ">
+    <div class="ui-g-4" *ngIf="currentBetType=='podium_bet'">
       <label>3rd</label>
     </div>
-    <div class="ui-g-8 ">
-      <p-dropdown [options]="riders " [(ngModel)]="thirdRider " placeholder="Select the 3rd on the podium" optionLabel="name "></p-dropdown>
+    <div class="ui-g-8" *ngIf="currentBetType=='podium_bet'">
+      <p-dropdown [options]="riders" [(ngModel)]="thirdRider" placeholder="Select the 3rd on the podium" optionLabel="name"></p-dropdown>
     </div>
-  --></div>
+  </div>
   <p-footer>
-    <p-button label="Bet! " (onClick)="placeBet() "></p-button>
+    <p-button label="Bet!" (onClick)="placeBet()"></p-button>
   </p-footer>
 </p-panel>

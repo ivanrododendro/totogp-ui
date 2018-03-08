@@ -1,22 +1,31 @@
 import { Player } from '../model/player';
-import { OnInit } from '@angular/core';
+import { OnInit, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-export class PlayerService {
- private players: Player[] = [new Player('Ale', 10), new Player('Ivan', 20)];
+@Injectable()
+export class PlayerService implements OnInit {
+  private players: Player[] = [new Player('Ale', 10), new Player('Ivan', 20)];
+  canBet: boolean;
 
-  // FIXME : on init ne marche pas ici
-  // ngOnInit() {
-  //   this.pl ayers.push(new Player('Ale', 10));
-  //   this.players.push(new Player('Ivan', 20));
+  constructor(private http: HttpClient) {}
 
-  //   console.log(this.players.length);
-  // }
-
+  ngOnInit(): void {
+    this.playerHasToBet();
+  }
   getPlayerRanking() {
     return this.players.slice();
   }
 
   playerHasToBet() {
-    return true;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.get(
+      'http://localhost:8081/totogp/rest/user/1/canBet',
+      httpOptions
+    );
   }
 }

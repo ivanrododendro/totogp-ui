@@ -28,7 +28,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.players = this.playerService.getPlayerRanking();
-    this.playerHasToBet = this.playerService.playerHasToBet();
+    this.playerService.playerHasToBet().subscribe(data => {
+      this.playerHasToBet = data['userCanBet'];
+      console.log(data);
+    });
   }
 
   bet() {

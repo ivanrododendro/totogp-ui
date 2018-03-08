@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BetService } from './service/bet-service';
 import { PlayerService } from './service/player-service';
 import { RiderService } from './service/rider-service';
+import { Http } from '@angular/http';
 
 const appRoutes: Routes = [
   {
@@ -58,11 +59,19 @@ const appRoutes: Routes = [
     PanelModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
-    GrowlModule
+    GrowlModule,
+    HttpClientModule
   ],
-  providers: [PlayerService, BetService, RiderService, MessageService],
+  providers: [
+    PlayerService,
+    BetService,
+    RiderService,
+    MessageService,
+    HttpClient,
+    BetService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
