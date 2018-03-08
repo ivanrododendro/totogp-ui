@@ -3,7 +3,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { BetService } from '../../service/bet-service.service';
+import { BetService } from '../../service/bet.service';
 
 @Component({
   selector: 'app-bet-dialog',

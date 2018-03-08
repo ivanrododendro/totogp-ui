@@ -1,4 +1,4 @@
-import { BetService } from './../../../service/bet-service.service';
+import { BetService } from './../../../service/bet.service';
 import { Rider } from './../../../model/rider';
 import { Component, OnInit } from '@angular/core';
 

@@ -23,8 +23,9 @@ import { HomeComponent } from './home/home.component';
 import { RankingComponent } from './home/ranking/ranking.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { BetService } from './service/bet-service.service';
-import { HomeService } from './service/home-service.service';
+import { BetService } from './service/bet.service';
+import { HomeService } from './service/home.service';
+import { LoginService } from './service/login.service';
 import { Http } from '@angular/http';
 
 const appRoutes: Routes = [
@@ -71,7 +72,7 @@ const appRoutes: Routes = [
     {
       provide: ErrorHandler,
       useClass: TotogpErrorHandler
-    }, AuthGuard
+    }, AuthGuard, LoginService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
-import { BetService } from './../../service/bet-service.service';
-import { HomeService } from './../../service/home-service.service';
+import { BetService } from './../../service/bet.service';
+import { HomeService } from './../../service/home.service';
 import { Player } from './../../model/player';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

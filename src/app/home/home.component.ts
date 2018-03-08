@@ -5,8 +5,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { DataList } from 'primeng/datalist';
 
 import { Player } from '../model/player';
-import { BetService } from '../service/bet-service.service';
-import { HomeService } from '../service/home-service.service';
+import { BetService } from '../service/bet.service';
+import { HomeService } from '../service/home.service';
 
 @Component({
   selector: 'app-home',
