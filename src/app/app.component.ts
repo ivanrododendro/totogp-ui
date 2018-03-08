@@ -1,3 +1,4 @@
+import { UserSessionService } from './service/user-session.service';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -11,7 +12,9 @@ export class AppComponent implements OnInit {
 
   username: string;
 
+  constructor(private userSessionService: UserSessionService) { }
+
   ngOnInit(): void {
-    this.username = sessionStorage.getItem('username');
+    this.username = this.userSessionService.getFirstname();
   }
 }

@@ -1,3 +1,5 @@
+import { UserSessionService } from './service/user-session.service';
+import { TotogpHttpClient } from './shared/totogp-http-client';
 import { AuthGuard } from './shared/auth-guard';
 import { TotogpErrorHandler } from './shared/totogp-error-handler';
 import { CommonModule } from '@angular/common';
@@ -72,7 +74,7 @@ const appRoutes: Routes = [
     {
       provide: ErrorHandler,
       useClass: TotogpErrorHandler
-    }, AuthGuard, LoginService
+    }, AuthGuard, LoginService, TotogpHttpClient, UserSessionService
   ],
   bootstrap: [AppComponent]
 })
