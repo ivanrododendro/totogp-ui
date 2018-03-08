@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { UserSessionService } from './service/user-session.service';
 import { TotogpHttpClient } from './shared/totogp-http-client';
 import { AuthGuard } from './shared/auth-guard';
@@ -30,13 +31,6 @@ import { HomeService } from './service/home.service';
 import { LoginService } from './service/login.service';
 import { Http } from '@angular/http';
 
-const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'bet', component: BetDialogComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: '**', component: HomeComponent, canActivate: [AuthGuard] }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,10 +52,7 @@ const appRoutes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     PanelModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    ),
+    AppRoutingModule,
     GrowlModule,
     HttpClientModule
   ],
