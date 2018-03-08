@@ -10,11 +10,15 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'TotoGP';
 
-  username: string;
+  headerMessage: string;
+  footerMessage: string;
+  loggedIn: boolean;
 
   constructor(private userSessionService: UserSessionService) { }
 
   ngOnInit(): void {
-    this.username = this.userSessionService.getFirstname();
+    this.loggedIn = this.userSessionService.isLoggedIn();
+    this.headerMessage = this.userSessionService.getFirstname() + ', you are ' + this.userSessionService.getRanking() + '\\n next race is ' + this.userSessionService.getRaceLabel();
+    this.footerMessage = this.userSessionService.getContestLabel();
   }
 }

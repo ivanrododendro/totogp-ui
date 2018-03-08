@@ -10,6 +10,16 @@ export class UserSessionService {
     sessionStorage.setItem('userSession', JSON.stringify(session));
   }
 
+  getRaceLabel() {
+    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+
+    if (session == null) {
+      return null;
+    }
+
+    return session.raceLabel;
+  }
+
   getFirstname() {
     const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
 
@@ -18,6 +28,26 @@ export class UserSessionService {
     }
 
     return session.firstName;
+  }
+
+  getRanking() {
+    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+
+    if (session == null) {
+      return null;
+    }
+
+    return session.ranking;
+  }
+
+  getContestLabel() {
+    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+
+    if (session == null) {
+      return null;
+    }
+
+    return session.contestLabel;
   }
 
   isLoggedIn() {

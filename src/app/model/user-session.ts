@@ -5,7 +5,7 @@ export class UserSession {
   image: any;
   enrollmentId: number;
   raceLabel: string;
-  championShipLabel: string;
+  contestLabel: string;
 
   constructor(firstName: string,
     lastName: string,
@@ -13,12 +13,12 @@ export class UserSession {
     image: any,
     enrollmentId: number,
     raceLabel: string,
-    championShipLabel: string) {
+    contestLabel: string) {
     this.firstName = firstName;
     this.ranking = ranking;
     this.image = image;
     this.enrollmentId = enrollmentId;
     this.raceLabel = raceLabel;
-    this.championShipLabel = championShipLabel;
+    this.contestLabel = contestLabel;
   }
 }
