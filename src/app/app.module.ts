@@ -20,8 +20,7 @@ import { GrowlModule } from 'primeng/growl';
 import { PanelModule } from 'primeng/panel';
 
 import { AppComponent } from './app.component';
-import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
-import { DriverSelectorComponent } from './home/bet-dialog/driver-selector/driver-selector.component';
+import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { RankingComponent } from './home/ranking/ranking.component';
 import { LoginComponent } from './login/login.component';
@@ -35,7 +34,6 @@ import { Http } from '@angular/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    DriverSelectorComponent,
     BetDialogComponent,
     LoginComponent,
     PageNotFoundComponent,
@@ -65,8 +63,12 @@ import { Http } from '@angular/http';
     {
       provide: ErrorHandler,
       useClass: TotogpErrorHandler
-    }, AuthGuard, LoginService, TotogpHttpClient, UserSessionService
+    },
+    AuthGuard,
+    LoginService,
+    TotogpHttpClient,
+    UserSessionService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

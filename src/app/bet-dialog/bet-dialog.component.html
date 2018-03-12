@@ -4,7 +4,7 @@
       <label>Winner</label>
     </div>
     <div class="ui-g-8" *ngIf="currentBetType=='winner_bet'">
-      <p-dropdown [options]="riders" [(ngModel)]="winnerRider" placeholder="Select the winner" optionLabel="name" *ngIf="currentBetType=='winner_bet'"></p-dropdown>
+      <p-dropdown [options]="riders" [(ngModel)]="winnerRider" placeholder="Select the winner" optionLabel="name"></p-dropdown>
     </div>
     <!-- <div class="ui-g-8">
       <p-dropdown [options]="riderSelect" [(ngModel)]="winnerRider" [style]="{'width':'300px'}" datakey="id">

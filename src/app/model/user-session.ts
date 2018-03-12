@@ -1,6 +1,6 @@
 export class UserSession {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   ranking: number;
   image: any;
   enrollmentId: number;
@@ -8,20 +8,21 @@ export class UserSession {
   contestLabel: string;
   contestId: number;
 
-  constructor(firstName: string,
-    lastName: string,
+  constructor(firstname: string,
+    lastname: string,
     ranking: number,
     image: any,
     enrollmentId: number,
     raceLabel: string,
     contestLabel: string,
     contestId: number) {
-    this.firstName = firstName;
+    this.firstname = firstname;
     this.ranking = ranking;
     this.image = image;
     this.enrollmentId = enrollmentId;
     this.raceLabel = raceLabel;
     this.contestLabel = contestLabel;
     this.contestId = contestId;
+    this.lastname = lastname;
   }
 }

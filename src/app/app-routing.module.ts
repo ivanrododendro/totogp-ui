@@ -1,5 +1,5 @@
 import { LoginComponent } from './login/login.component';
-import { BetDialogComponent } from './home/bet-dialog/bet-dialog.component';
+import { BetDialogComponent } from './bet-dialog/bet-dialog.component';
 import { AuthGuard } from './shared/auth-guard';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -17,8 +17,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
-    ),
+    )
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

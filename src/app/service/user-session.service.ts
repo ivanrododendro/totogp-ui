@@ -3,15 +3,28 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserSessionService {
-
-  constructor() { }
+  constructor() {}
 
   create(session: UserSession) {
     sessionStorage.setItem('userSession', JSON.stringify(session));
   }
 
+  getEnrollmentId() {
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
+
+    if (session == null) {
+      return null;
+    }
+
+    return session.enrollmentId;
+  }
+
   getRaceLabel() {
-    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
 
     if (session == null) {
       return null;
@@ -21,17 +34,21 @@ export class UserSessionService {
   }
 
   getFirstname() {
-    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
 
     if (session == null) {
       return null;
     }
 
-    return session.firstName;
+    return session.firstname;
   }
 
   getRanking() {
-    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
 
     if (session == null) {
       return null;
@@ -41,7 +58,9 @@ export class UserSessionService {
   }
 
   getContestLabel() {
-    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
 
     if (session == null) {
       return null;
@@ -51,7 +70,9 @@ export class UserSessionService {
   }
 
   isLoggedIn() {
-    const session: UserSession = JSON.parse(sessionStorage.getItem('userSession'));
+    const session: UserSession = JSON.parse(
+      sessionStorage.getItem('userSession')
+    );
 
     return session != null;
   }

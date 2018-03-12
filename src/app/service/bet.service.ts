@@ -1,66 +1,65 @@
 import { Rider } from './../model/rider';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TotogpHttpClient } from '../shared/totogp-http-client';
+import { UserSessionService } from './user-session.service';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BetService {
+  private riders: Rider[] = [];
 
-  private riders: Rider[] = [
-    new Rider(
-      4,
-      'Andrea Dovizioso',
-      'http://www.motogp.com/en/api/rider/photo/grid/old/5885'
-    ),
-    new Rider(
-      25,
-      'Maverick Vinales',
-      'http://www.motogp.com/en/api/rider/photo/grid/old/7409'
-    )
-  ];
+  constructor(
+    private http: TotogpHttpClient,
+    private httpClient: HttpClient,
+    private userSessionService: UserSessionService
+  ) {
+    http.get('home/riders').subscribe(next => {
+      for (const entry of next) {
+        this.riders.push(
+          new Rider(entry['id'], entry['name'], entry['pictureUrl'])
+        );
+      }
+    });
+  }
 
-  constructor(private http: HttpClient) { }
+  getWinnerBet(): Observable<Rider> {
+    return this.httpClient.get<Rider>(
+      environment.serverUrl +
+        'bet/winnerBet/' +
+        this.userSessionService.getEnrollmentId()
+    );
+  }
 
   getRiders() {
     return this.riders.slice();
   }
-
 
   bet() {
     console.log('betservice :: bet');
   }
 
   placeWinnerBet(driverNumber: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    };
-
-    this.http
-      .post(
-        'http://localhost:8081/totogp/rest/bet/placeWinnerBet',
-        'enrollmnetId=1&driverNumber=' + driverNumber,
-        httpOptions
-      )
-      .subscribe(next => console.log(next), error => console.log(error));
+    this.http.postForm(
+      'bet/placeWinnerBet',
+      new Map([
+        ['enrollmentId', this.userSessionService.getEnrollmentId()],
+        ['driverNumber', driverNumber]
+      ])
+    );
   }
-  placePoleBet(driverNumber: number) { }
+  placePoleBet(driverNumber: number) {}
+
   placePodiumBet(
     fisrtDriverNumber: number,
     secondDriverNumber: number,
     thidrDriverNumber: number
-  ) { }
+  ) {}
 
   getCurrentBetType() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
     return this.http.get(
-      'http://localhost:8081/totogp/rest/bet/current/type/enrollment/1',
-      httpOptions
+      'bet/current/type/enrollment/' + this.userSessionService.getEnrollmentId()
     );
   }
 }

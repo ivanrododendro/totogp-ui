@@ -23,10 +23,10 @@ export class RankingComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.players = this.playerService.getPlayerRanking();
+    // this.players = this.playerService.getPlayerRanking();
     // this.playerHasToBet = this.playerService.playerHasToBet();
   }
 

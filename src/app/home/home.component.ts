@@ -24,13 +24,15 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.players = this.playerService.getPlayerRanking();
+    this.playerService.getPlayerRanking().subscribe(next => {
+      this.players = next;
+    });
+
     this.playerService.playerHasToBet().subscribe(data => {
       this.playerHasToBet = data['userCanBet'];
-      console.log(data);
     });
   }
 

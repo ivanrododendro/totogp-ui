@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080/poc-angular-logger/rest/'
+  serverUrl: 'http://192.168.1.49:8081/totogp/rest/'
 };

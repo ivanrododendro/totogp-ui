@@ -1,31 +1,33 @@
 import { Player } from '../model/player';
 import { OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserSessionService } from './user-session.service';
+import { TotogpHttpClient } from '../shared/totogp-http-client';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HomeService implements OnInit {
-  private players: Player[] = [new Player('Ale', 10), new Player('Ivan', 20)];
-  canBet: boolean;
+  private ranking: Player[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private userSessionService: UserSessionService,
+    private myHttpClient: TotogpHttpClient
+  ) {}
 
   ngOnInit(): void {
     this.playerHasToBet();
   }
-  getPlayerRanking() {
-    return this.players.slice();
+
+  getPlayerRanking(): Observable<Player[]> {
+    const enrollmentId = this.userSessionService.getEnrollmentId();
+
+    return this.myHttpClient.get('home/ranking/' + enrollmentId);
   }
 
   playerHasToBet() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+    const enrollmentId = this.userSessionService.getEnrollmentId();
 
-    return this.http.get(
-      'http://localhost:8081/totogp/rest/user/1/canBet',
-      httpOptions
-    );
+    return this.myHttpClient.get('user/' + enrollmentId + '/canBet');
   }
 }

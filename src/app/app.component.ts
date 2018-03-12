@@ -14,11 +14,16 @@ export class AppComponent implements OnInit {
   footerMessage: string;
   loggedIn: boolean;
 
-  constructor(private userSessionService: UserSessionService) { }
+  constructor(private userSessionService: UserSessionService) {}
 
   ngOnInit(): void {
     this.loggedIn = this.userSessionService.isLoggedIn();
-    this.headerMessage = this.userSessionService.getFirstname() + ', you are ' + this.userSessionService.getRanking() + '\\n next race is ' + this.userSessionService.getRaceLabel();
+    this.headerMessage =
+      this.userSessionService.getFirstname() +
+      ', you are ' +
+      this.userSessionService.getRanking() +
+      '<br> next race is ' +
+      this.userSessionService.getRaceLabel();
     this.footerMessage = this.userSessionService.getContestLabel();
   }
 }

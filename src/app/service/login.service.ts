@@ -7,10 +7,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LoginService {
+  constructor(
+    private httpClient: TotogpHttpClient,
+    private userSessionService: UserSessionService
+  ) {}
 
-  constructor(private httpClient: TotogpHttpClient, private userSessionService: UserSessionService) { }
-
-  login<UserSession>(username: string, password: string): Observable<UserSession> {
-    return this.httpClient.postForm('login', new Map([['username', username], ['password', password]]));
+  login<UserSession>(
+    username: string,
+    password: string
+  ): Observable<UserSession> {
+    return this.httpClient.postForm(
+      'user/login',
+      new Map([['username', username], ['password', password]])
+    );
   }
 }
